@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Umrah Flyer Prompt Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        padding: 24px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      fieldset {
+        border: 1px solid #ddd;
+        padding: 16px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+      }
+
+      legend {
+        font-weight: bold;
+        padding: 0 10px;
+      }
+
+      label {
+        display: block;
+        margin-top: 12px;
+        font-size: 14px;
+      }
+
+      /* FORM CONTROLS */
+      input:not([type="checkbox"]),
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      /* ROW */
+      .row {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .row > div {
+        flex: 1;
+      }
+
+      /* BUTTON */
+      button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        background: #0b7285;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #095c6a;
+      }
+
+      /* CHECKBOX */
+      .announcement-toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 12px 0 16px 0;
+      }
+
+      .announcement-toggle input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .announcement-toggle label {
+        margin: 0;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🕋 Umrah Flyer Prompt Generator</h1>
+
+      <!-- Header -->
+      <fieldset>
+        <legend>Header</legend>
+        <label>Agency Name</label>
+        <input id="agency" value="GULSHAN INTERNATIONALS" />
+
+        <label>Main Title</label>
+        <input id="title" value="2026 Ramadan Umrah Package" />
+      </fieldset>
+
+      <!-- Middle -->
+      <fieldset>
+        <legend>Middle Section</legend>
+        <input id="highlight1" value="20 Days of Ramadan" />
+        <input id="highlight2" value="Eid-ul-Fitr in Madina Shareef" />
+      </fieldset>
+
+      <!-- Pricing -->
+      <fieldset>
+        <legend>Pricing</legend>
+        <input placeholder="Old price" id="oldPrice" value="1,45,000" />
+        <input placeholder="New price" id="newPrice" value="128,000/- Only" />
+        <input id="availability" value="Limited Seats Available" />
+      </fieldset>
+
+      <!-- Travel -->
+      <fieldset>
+        <legend>Travel</legend>
+        <input id="flight" value="HYD – JED – HYD" />
+      </fieldset>
+
+      <!-- Booking -->
+      <fieldset>
+        <legend>Booking Deadline</legend>
+        <input id="booking" value="31st December 2025" />
+      </fieldset>
+
+      <!-- Announcement -->
+      <fieldset>
+        <legend>Announcement Strip</legend>
+
+        <div class="announcement-toggle">
+          <input type="checkbox" id="announcementToggle" />
+          <label for="announcementToggle">Enable Announcement Strip</label>
+        </div>
+
+        <label>Announcement Text (One Line)</label>
+        <input
+          id="announcementText"
+          placeholder="e.g. Seats filling fast • Other packages Available"
+        />
+      </fieldset>
+
+      <!-- Footer -->
+      <fieldset>
+        <legend>Footer & Contact</legend>
+
+        <!-- <label>Additional Info Line</label>
+        <input id="extraLine" value="" /> -->
+
+        <div class="row">
+          <div>
+            <label>Contact Name 1</label>
+            <input id="contactName1" value="Abdul Kareem Razvi" />
+          </div>
+          <div>
+            <label>Contact Number 1</label>
+            <input id="contactNumber1" value="7867887863" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Contact Name 2</label>
+            <input id="contactName2" value="Abdal Raza Barkati" />
+          </div>
+          <div>
+            <label>Contact Number 2</label>
+            <input id="contactNumber2" value="7416978692" />
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Design -->
+      <fieldset>
+        <legend>Design Customization</legend>
+
+        <label>Design Style</label>
+        <select id="designStyle">
+          <option>Premium Luxury</option>
+          <option>Modern Minimal</option>
+          <option>Traditional Islamic</option>
+          <option>Corporate Elegant</option>
+          <option>Bold Promotional</option>
+          <option>Calm & Spiritual</option>
+        </select>
+
+        <label>Color Palette</label>
+        <select id="colorPalette">
+          <option>Deep Teal, Gold & White</option>
+          <option>Emerald Green & Gold</option>
+          <option>Royal Blue & Silver</option>
+          <option>Burgundy & Gold</option>
+          <option>Black, White & Gold</option>
+          <option>Soft Beige & Olive</option>
+        </select>
+      </fieldset>
+
+      <button onclick="generatePrompt()">Generate AI Prompt</button>
+
+      <!-- Output -->
+      <fieldset>
+        <legend>Generated Prompt</legend>
+        <textarea id="output"></textarea>
+        <button onclick="copyPrompt()">📋 Copy Prompt</button>
+      </fieldset>
+    </div>
+
+    <script>
+      function generatePrompt() {
+        const agency = document.getElementById("agency").value;
+
+        const title = document.getElementById("title").value;
+        const h1 = document.getElementById("highlight1").value;
+        const h2 = document.getElementById("highlight2").value;
+        const oldPrice = document.getElementById("oldPrice").value;
+        const newPrice = document.getElementById("newPrice").value;
+        const availability = document.getElementById("availability").value;
+        const flight = document.getElementById("flight").value;
+        const booking = document.getElementById("booking").value;
+        const extraLine = document.getElementById("extraLine").value;
+        const c1 = document.getElementById("contactName1").value;
+        const n1 = document.getElementById("contactNumber1").value;
+        const c2 = document.getElementById("contactName2").value;
+        const n2 = document.getElementById("contactNumber2").value;
+        const style = document.getElementById("designStyle").value;
+        const palette = document.getElementById("colorPalette").value;
+
+        const annEnabled =
+          document.getElementById("announcementToggle").checked;
+        const annText = document
+          .getElementById("announcementText")
+          .value.trim();
+
+        const annSection =
+          annEnabled && annText
+            ? `
+---
+Optional Announcement Strip:
+"${annText}"
+Display as a clean, elegant horizontal strip above the footer.
+`
+            : "";
+
+        const prompt = `
+Create a modern, elegant, high-end Umrah Package flyer.
+Use premium Islamic aesthetics, clean layout, professional typography, smooth gradients, and a sophisticated travel-brochure feel.
+Design should look fresh, classy, minimal, and visually appealing while keeping ALL the details exactly as written below.
+
+---
+
+Header Section
+
+${agency} (logo space on top left)
+(Use the provided image as logo)
+
+${title}
+
+Background: subtle geometric Islamic patterns
+Main image: Masjid Nabawi’s Green Dome (high-quality, soft glow)
+
+---
+
+Middle Section
+
+${h1}
+${h2}
+(Extra bold and main focus)
+
+
+Pre-Booking Offer
+Show old price ${oldPrice} with a red cross/strike-through
+New price prominently displayed:
+${newPrice}
+
+
+Small highlighted label:
+${availability}
+
+Flight section text:
+${flight} (with plane icon)
+
+---
+
+Facilities section (Use elegant icons for each facility)
+Visa
+Air Ticket
+Hotel Room
+Buffet Meals
+Local Transportation
+Ziyaraat Makkah & Madina
+Travel Insurance
+Free Laundry
+Free 5 Ltr Zam Zam
+
+---
+
+Booking Deadline
+Last Date of Booking: ${booking}
+
+announcement strip
+${annSection}
+
+Bottom Section
+${extraLine}
+
+Footer with contact names & numbers:
+${c1} – ${n1}
+${c2} – ${n2}
+
+---
+
+Design Customization (Follow Strictly)
+
+Design Style: ${style}
+Color Palette: ${palette}
+Clean, modern typography with strong hierarchy
+
+Use elegant decorative dividers
+
+Smooth gradients and soft shadows
+
+Balanced spacing, uncluttered layout
+
+High-quality icons for bullet points
+
+Make the price stand out boldly
+
+Make “Limited Seats Available” visually highlighted
+
+Professional travel-agency look suitable for print & digital
+
+---
+
+Output Requirements
+High resolution
+Vertical A4 / Instagram Portrait
+Crisp, polished finish
+`;
+
+        document.getElementById("output").value = prompt.trim();
+      }
+
+      function copyPrompt() {
+        const out = document.getElementById("output");
+        out.select();
+        document.execCommand("copy");
+        alert("Prompt copied!");
+      }
+    </script>
+  </body>
+</html>
