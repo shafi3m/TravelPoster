@@ -274,6 +274,7 @@
       </fieldset>
 
       <button onclick="generatePrompt()">Generate AI Prompt</button>
+      <button type="button" onclick="clearAllFields()">Clear All Fields</button>
 
       <!-- Output -->
       <fieldset id="GenPrm">
@@ -417,6 +418,28 @@ Crisp, polished finish
 `;
 
         document.getElementById("output").value = prompt.trim();
+      }
+
+      function clearAllFields() {
+        // Text inputs & textareas
+        document
+          .querySelectorAll("input:not([type='checkbox']), textarea")
+          .forEach((el) => {
+            el.value = "";
+          });
+
+        // Select dropdowns → reset to first option
+        document.querySelectorAll("select").forEach((select) => {
+          select.selectedIndex = 0;
+        });
+
+        // Checkboxes → unchecked
+        document.querySelectorAll("input[type='checkbox']").forEach((cb) => {
+          cb.checked = false;
+        });
+
+        // Clear output textarea
+        document.getElementById("output").value = "";
       }
 
       function copyPrompt() {
