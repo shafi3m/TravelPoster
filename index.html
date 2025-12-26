@@ -111,12 +111,53 @@
         font-size: 14px;
         cursor: pointer;
       }
+
+      /* =========================
+   RESPONSIVE IMPROVEMENTS
+   ========================= */
+      @media (max-width: 768px) {
+        .container {
+          padding: 18px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+
+        button {
+          font-size: 15px;
+          padding: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 14px;
+        }
+
+        fieldset {
+          padding: 12px;
+        }
+
+        label {
+          font-size: 13px;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 11px;
+        }
+
+        .row {
+          gap: 10px;
+        }
+      }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <h1>🕋 Umrah Flyer Prompt Generator</h1>
+      <h1>🕋 Umrah Poster Prompt Generator</h1>
 
       <!-- Header -->
       <fieldset>
