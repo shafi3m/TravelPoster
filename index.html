@@ -32,6 +32,9 @@
         margin-bottom: 20px;
         border-radius: 8px;
       }
+      #GenPrm {
+        margin-top: 20px;
+      }
 
       legend {
         font-weight: bold;
@@ -135,9 +138,15 @@
       <!-- Pricing -->
       <fieldset>
         <legend>Pricing</legend>
+        <label for="">Old Price:</label>
         <input placeholder="Old price" id="oldPrice" value="1,45,000" />
+        <label for="">New Price:</label>
         <input placeholder="New price" id="newPrice" value="128,000/- Only" />
-        <input id="availability" value="Limited Seats Available" />
+        <input
+          placeholder="Limited Seats"
+          id="availability"
+          value="Limited Seats Available"
+        />
       </fieldset>
 
       <!-- Travel -->
@@ -181,7 +190,7 @@
             <input id="contactName1" value="Abdul Kareem Razvi" />
           </div>
           <div>
-            <label>Contact Number 1</label>
+            <label>Number 1</label>
             <input id="contactNumber1" value="7867887863" />
           </div>
         </div>
@@ -192,7 +201,7 @@
             <input id="contactName2" value="Abdal Raza Barkati" />
           </div>
           <div>
-            <label>Contact Number 2</label>
+            <label>Number 2</label>
             <input id="contactNumber2" value="7416978692" />
           </div>
         </div>
@@ -226,7 +235,7 @@
       <button onclick="generatePrompt()">Generate AI Prompt</button>
 
       <!-- Output -->
-      <fieldset>
+      <fieldset id="GenPrm">
         <legend>Generated Prompt</legend>
         <textarea id="output"></textarea>
         <button onclick="copyPrompt()">📋 Copy Prompt</button>
